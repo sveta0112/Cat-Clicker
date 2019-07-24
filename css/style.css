@@ -1,0 +1,60 @@
+h1, h2 {
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+#app-body {
+    display: flex;
+    height: 100%;
+}
+
+.kitty_list {
+    flex-basis: 20%;
+    background-color: #efefef;
+    height: 95vh;
+}
+
+.each_cat_selected{
+    background-color: green;
+    color: #fff;
+    font-weight: 400;
+}
+.kitty_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.each_cat {
+    font-size: 1.50em;
+    text-align: center;
+}
+
+.each_cat:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+
+.kitty-display{
+    flex-basis: 95vh;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 40px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+
+
+

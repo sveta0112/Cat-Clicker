@@ -61,14 +61,23 @@ const catView = (function(){
 const listView = (function(){
     const listDisplay = document.querySelector('.kitty_list');
 
+
+    function init() {
+        listDisplay.addEventListener('click', function(e){
+            octopus.updateCurrentCat(e.target.textContent);
+            //console.log(e.target.textContent);
+        });
+    }
+
     function render(cats) {
         listDisplay.innerHTML= '';
         cats.forEach(cat => {
-            listDisplay.innerHTML += `<li class="each_cat">${cat.name}</li>`
+            listDisplay.innerHTML += '<li class="each_cat '+( cat.selected ? 'each_cat_selected':'')+'">'+cat.name+'</li>';
         });
     }
 
     return {
+        init: init,
         render: render
     }
 })();
@@ -81,7 +90,9 @@ const octopus = (function(){
     let selectedCat = model[0];
 
     function init() {
+        selectedCat.selected = true;
         catView.init();
+        listView.init();
         catView.render(selectedCat);
         listView.render(model);
     }
@@ -91,9 +102,20 @@ const octopus = (function(){
         catView.render(selectedCat);
     }
 
+    function updateCurrentCat(name) {
+        selectedCat.selected = false;
+        selectedCat = model.find(cat => {
+            return cat.name === name;
+        });
+        selectedCat.selected = true;
+        listView.render(model);
+        catView.render(selectedCat);
+    }
+
     return {
         init: init,
-        catWasClicked: catWasClicked
+        catWasClicked: catWasClicked,
+        updateCurrentCat: updateCurrentCat
     }
 })();
 
