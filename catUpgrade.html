@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cat Clicker</title>
+        <style>
+           .inline-block2 {
+                display: inline-block;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="inline-block">
+                <h2 id="green">Green Eye</h2>
+                <img src="img/cat1.jpeg" alt="cat" id="kitty" width="300" height="300">
+                
+            </div>
+            <div class="inline-block">
+                <h2 id="brown">Brown Eye</h2>
+                <img src="img/cat2.jpeg" alt="cat" id="kitty2" width="300" height="300">
+            </div>
+            <div class="inline-block2"></div>
+        </div>
+       
+       <script>
+            var elem = document.getElementById('kitty');
+            var elem2 = document.getElementById('kitty2');
+            var times = document.getElementById('times');
+            var times2 = document.getElementById('times2');
+            var name1 = document.getElementById('green');
+            var canvas = document.getElementsByClassName('inline-block2');
+            var counter = 0;
+            var counter2 = 0;
+            
+
+            name1.addEventListener('click', function(){
+                canvas.appendChild()
+            });
+            
+            elem.addEventListener('click', function(){
+                counter++;
+                times.innerHTML = counter;
+            });
+            elem2.addEventListener('click', function(){
+                counter2++;
+                times2.innerHTML = counter2;
+            });
+        </script>
+    </body>
+</html>
