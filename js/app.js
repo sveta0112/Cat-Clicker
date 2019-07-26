@@ -35,19 +35,45 @@ const model = [
 
 
 //View
-
 const catView = (function(){
     const catDisplay = document.querySelector('.entry-body');
+    const adminBtn = document.querySelector('.admin-btn');
+    const hiddenAdminElements = document.querySelectorAll('.hidden');
+    const cancelBtn = document.querySelector('.cancel-btn');
+    const catName= document.querySelector('#cat_name');
+    const catImg = document.querySelector('#cat_img');
+    const clickCoutn = document.querySelector('#cat_click_count');
+    const submitBtn = document.querySelector('.submit-btn');
 
     function init() {
         catDisplay.addEventListener('click', octopus.catWasClicked);
+        adminBtn.addEventListener('click', _toggleAdminElements);
+        cancelBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            _toggleAdminElements();
+        });
+        submitBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            octopus.changeCurrentCat(catName.value, catImg.value, clickCoutn.value);
+        });
     }
     function render(cat) {
         catDisplay.innerHTML = `
             <h2 class="cat-name">${cat.name}</h2>
-            <img src="${cat.img}" class="cat-img">
+            <img class='cat_img' src='${cat.img}' width='300' height='300'>
             <h2>Clicked: <span class="click-count">${cat.count}</span></h2>
         `;
+        _fillAdminForm(cat);
+    }
+
+    function _toggleAdminElements() {
+        hiddenAdminElements.forEach((element)=> element.classList.toggle('hidden'));
+    }
+
+    function _fillAdminForm(cat) {
+        catName.value = cat.name;
+        catImg.value = cat.img;
+        clickCoutn.value = cat.count;
     }
 
     return {
@@ -112,10 +138,20 @@ const octopus = (function(){
         catView.render(selectedCat);
     }
 
+    function changeCurrentCat(name, img, count) {
+        selectedCat.name = name;
+        selectedCat.img = img;
+        selectedCat.count = count;
+
+        catView.render(selectedCat);
+        listView.render(model);
+    }
+
     return {
         init: init,
         catWasClicked: catWasClicked,
-        updateCurrentCat: updateCurrentCat
+        updateCurrentCat: updateCurrentCat,
+        changeCurrentCat: changeCurrentCat
     }
 })();
 

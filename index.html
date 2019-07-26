@@ -12,11 +12,11 @@
             <aside class="cat_list">
                 <h2>Cat Choices</h2>
                 <ul class="kitty_list">
-                    <li class="each_cat each_cat_selected">Murka</li>
+                    <!-- <li class="each_cat each_cat_selected">Murka</li>
                     <li class="each_cat">Tishka</li>
                     <li class="each_cat">Gena</li>
                     <li class="each_cat">Cheburashka</li>
-                    <li class="each_cat">Alyssa</li>
+                    <li class="each_cat">Alyssa</li> -->
                 </ul> 
             </aside>
             <main class="kitty-display">
@@ -27,6 +27,30 @@
                         <div class='entry-body'></div> 
                     </div> 
                 </div> 
+                <div class="admin-section container">
+                    <div class="admin-header">
+                            <h3 class="admin-title hidden">Edit Cat Info</h3>
+                            <button class="btn admin-btn">Admin</button>
+                    </div>
+                    <form class="admin-form hidden" id="admin-form">
+                        <div class="form-input">
+                            <label for="cat_name">Name</label>
+                            <input type="text" name="cat_name" value="" id="cat_name"/>
+                        </div> <!-- .form-input -->
+                        <div class="form-input">
+                            <label for="cat_img">Image</label>
+                            <input type="text" name="cat_img" value="" id="cat_img"/>
+                        </div><!-- .form-input -->
+                        <div class="form-input">
+                            <label for="click_count">Clicks</label>
+                            <input type="number" name="click_count" value="" id="cat_click_count"/>
+                        </div><!-- .form-input -->
+                        <div class="form-btns">
+                            <button class="btn cancel-btn">Cancel</button>
+                            <button class="btn submit-btn" form="admin-form" value="Submit">Ok</button>
+                        </div> <!-- .form-btns -->
+                    </form> <!-- .admin-form -->
+            </div> <!-- .admin-section -->
                 
             </main>
         </section> 
